@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv37ohew7xxtw"]
+
+[ext_resource type="Texture2D" uid="uid://3esjk24gl34u" path="res://Projectiles/Firebolt.png" id="1_g6aq8"]
+[ext_resource type="Script" path="res://firebolt.gd" id="1_jve33"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjfqc"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m4fb"]
+atlas = ExtResource("1_g6aq8")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3jc2"]
+atlas = ExtResource("1_g6aq8")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lblli"]
+atlas = ExtResource("1_g6aq8")
+region = Rect2(0, 7, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msgtf"]
+atlas = ExtResource("1_g6aq8")
+region = Rect2(7, 7, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmnxc"]
+atlas = ExtResource("1_g6aq8")
+region = Rect2(0, 14, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imvg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m4fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3jc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lblli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msgtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmnxc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Firebolt" type="Area2D" groups=["Projectile"]]
+collision_mask = 6
+script = ExtResource("1_jve33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qjfqc")
+
+[node name="Flame" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_imvg8")
+autoplay = "default"
+frame = 3
+frame_progress = 0.881734
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
