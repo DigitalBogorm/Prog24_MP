@@ -7,22 +7,20 @@ var screen_size # Size of the game window.
 signal casting(spell, direction, location)
 @export var firebolt: PackedScene
 
-
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	if is_multiplayer_authority():
 		$Camera2D.enabled = true
-		$Camera2D.make_current()
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	#Sets character to standstill upon spawn
+	#Sets character to standstill upon spawning
 	$PlayerAvatar.animation = "Standing"
 
 
 func _process(_delta):
 	if is_multiplayer_authority():
-	#Two things here: one measures x-velocity, the other y-velocity
+#Two things here: one measures x-velocity, the other y-velocity
 		if Input.is_action_pressed("move_right"):
 			velocity.x = speed
 		elif Input.is_action_pressed("move_left"):
@@ -54,18 +52,8 @@ func _process(_delta):
 			#$AnimatedSprite2D.flip_v = velocity.y > 0
 
 		move_and_slide()
-		
-		if Input.is_action_pressed("cast"):
-			fireboltCast()
+	
 
-func fireboltCast():
-	if $Cooldown.is_stopped() == true:
-		var boltFire = firebolt.instantiate()
-		boltFire.position = position
-		boltFire.rotation = rotation
-		add_sibling(boltFire)
-		$Cooldown.set_wait_time(boltFire.cooldown)
-		$Cooldown.start()
 	
 
 

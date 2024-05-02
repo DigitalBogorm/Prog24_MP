@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4yurqvknmqtf"]
+
+[ext_resource type="Script" path="res://gameScene.gd" id="1_s7c21"]
+[ext_resource type="PackedScene" uid="uid://devctmvuq76os" path="res://Player.tscn" id="2_2ctbr"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_s7c21")
+player_scene = ExtResource("2_2ctbr")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Stage" type="Node2D" parent="."]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1149.0
+offset_bottom = 643.0
+
+[node name="LineEdit" type="LineEdit" parent="Menu"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 247.0
+offset_right = 551.0
+offset_bottom = 310.0
+placeholder_text = "Write the IP you're joining"
+alignment = 1
+
+[node name="Host" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 88.0
+offset_right = 260.0
+offset_bottom = 167.0
+text = "Host a game"
+
+[node name="Join" type="Button" parent="Menu"]
+offset_left = 41.0
+offset_top = 237.0
+offset_right = 260.0
+offset_bottom = 316.0
+text = "Join a game"
+
+[connection signal="pressed" from="Menu/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Menu/Join" to="." method="_on_join_pressed"]
