@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://devctmvuq76os"]
+[gd_scene load_steps=11 format=3 uid="uid://devctmvuq76os"]
 
 [ext_resource type="Script" path="res://Movement.gd" id="1_x3li1"]
 [ext_resource type="Texture2D" uid="uid://6gvhh12o3dqc" path="res://PlrSprites/WizardUpdated.png" id="2_fbacp"]
@@ -42,6 +42,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ewbf6"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" groups=["Avatar"]]
 collision_mask = 3
 motion_mode = 1
@@ -53,6 +58,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_cj814")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(3, 3)
 
 [node name="PlayerAvatar" type="AnimatedSprite2D" parent="."]
@@ -61,3 +67,6 @@ animation = &"Moving"
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ewbf6")
