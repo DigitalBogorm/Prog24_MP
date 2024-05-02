@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg4kil2kkwxkb"]
 
-[ext_resource type="Texture2D" uid="uid://qn1j8um4gath" path="res://Dungeon/DungeonTiles.png" id="1_ufkmt"]
+[ext_resource type="Texture2D" uid="uid://qn1j8um4gath" path="res://Dungeon/DungeonTiles.png" id="1_k47v2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j2326"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -11,7 +11,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_he1kv"]
 resource_name = "Dungeon"
-texture = ExtResource("1_ufkmt")
+texture = ExtResource("1_k47v2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

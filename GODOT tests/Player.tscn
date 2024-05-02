@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://devctmvuq76os"]
+[gd_scene load_steps=10 format=3 uid="uid://devctmvuq76os"]
 
 [ext_resource type="Script" path="res://Movement.gd" id="1_x3li1"]
 [ext_resource type="Texture2D" uid="uid://6gvhh12o3dqc" path="res://PlrSprites/WizardUpdated.png" id="2_fbacp"]
-[ext_resource type="PackedScene" uid="uid://dv37ohew7xxtw" path="res://firebolt.tscn" id="2_qxc2m"]
 [ext_resource type="Texture2D" uid="uid://cgxrofajw8tr5" path="res://PlrSprites/WizardRun.png" id="3_bgr1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj814"]
@@ -42,16 +41,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ewbf6"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wgac7"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("PlayerAvatar:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("PlayerAvatar:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("PlayerAvatar:flip_h")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["Avatar"]]
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_x3li1")
-firebolt = ExtResource("2_qxc2m")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -69,4 +76,4 @@ animation = &"Moving"
 one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ewbf6")
+replication_config = SubResource("SceneReplicationConfig_wgac7")
