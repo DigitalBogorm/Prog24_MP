@@ -41,6 +41,7 @@ offset_bottom = 167.0
 text = "Host a game"
 
 [node name="Join" type="Button" parent="Menu"]
+layout_mode = 0
 offset_left = 41.0
 offset_top = 237.0
 offset_right = 260.0

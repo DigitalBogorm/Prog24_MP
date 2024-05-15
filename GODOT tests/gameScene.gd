@@ -3,6 +3,8 @@ extends Node2D
 
 @export var player_scene: PackedScene
 
+
+
 var players = {}
 
 var player_info = {"name": "Name"}
@@ -45,4 +47,9 @@ func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 	players[peer_id] = player_info
 	
-
+@rpc("any_peer", "call_local")
+func _spawn_projectile(startLocation, targetLocation):
+	var projectile = load("res://Projectiles/firebolt.tscn").instantiate()
+	projectile.position = startLocation
+	projectile.look_at(targetLocation)
+	call_deferred("add_child", projectile)

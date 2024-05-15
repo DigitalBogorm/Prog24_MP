@@ -7,10 +7,13 @@ var screen_size # Size of the game window.
 signal casting(spell, direction, location)
 @export var firebolt: PackedScene
 
+var projectile = load("res://Projectiles/firebolt.tscn")
+
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	if is_multiplayer_authority():
 		$Camera2D.enabled = true
+	#$MultiplayerSpawner.set_spawn_path(self.get_parent().get_path())
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -53,7 +56,19 @@ func _process(_delta):
 
 		move_and_slide()
 	
+		if Input.is_action_pressed("cast"):
+			var startPos = Vector2()
+			var targetPos = Vector2()
+			startPos = position
+			targetPos = get_local_mouse_position()
+			#$MultiplayerSpawner.add_spawnable_scene('shot')
+			#call_deferred("add_child",shot)
+			get_parent()._spawn_projectile.rpc(startPos, targetPos)
+			
+		
+		
+		
 
-	
+
 
 
