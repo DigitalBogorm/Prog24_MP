@@ -15,6 +15,9 @@ func _on_host_pressed():
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_add_player)
 	_add_player()
+	var arena = load("res://Arena.tscn").instantiate()
+	call_deferred("add_child", arena)
+
  
 func _add_player(id = 1):
 	var player = player_scene.instantiate()
