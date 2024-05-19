@@ -41,11 +41,23 @@ offset_bottom = 167.0
 text = "Host a game"
 
 [node name="Join" type="Button" parent="Menu"]
+layout_mode = 0
 offset_left = 41.0
 offset_top = 237.0
 offset_right = 260.0
 offset_bottom = 316.0
 text = "Join a game"
 
+[node name="Respawn" type="Button" parent="Menu"]
+visible = false
+layout_mode = 0
+offset_left = 36.0
+offset_top = 372.0
+offset_right = 258.0
+offset_bottom = 444.0
+disabled = true
+text = "Respawn"
+
 [connection signal="pressed" from="Menu/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Menu/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Menu/Respawn" to="." method="_on_respawn_pressed"]
