@@ -17,6 +17,7 @@ func _on_host_pressed():
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_add_player)
 	_add_player()
+
  
 func _add_player(id = 1):
 	var player = player_scene.instantiate()
@@ -30,8 +31,10 @@ func _on_join_pressed():
 		var adress = $Menu/LineEdit.text
 		peer.create_client(adress, 135)
 		multiplayer.multiplayer_peer = peer
+
 	else:
 		$Menu/LineEdit.placeholder_text = "Please write an adress"
+
 
 	
  
@@ -53,3 +56,12 @@ func _spawn_projectile(startLocation, targetLocation):
 	projectile.position = startLocation
 	projectile.look_at(targetLocation)
 	call_deferred("add_child", projectile)
+
+func _on_respawn_pressed():
+	_add_player()
+	$Menu.visible = false
+
+
+func on_death():
+	
+	$Menu/Respawn.visible = true

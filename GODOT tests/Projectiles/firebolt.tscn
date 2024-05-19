@@ -77,3 +77,4 @@ frame_progress = 0.881734
 replication_config = SubResource("SceneReplicationConfig_xxkep")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
